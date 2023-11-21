@@ -28,4 +28,5 @@ struct JournalEntryRowView: View {
 
 #Preview {
     JournalEntriesListView()
+        .modelContainer(for: JournalEntry.self, inMemory: true)
 }

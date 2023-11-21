@@ -12,20 +12,27 @@ struct JournalEntryDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
-                Text(journalEntry.date, style: .date)
-                    .font(.system(size: 14, weight: .medium))
-                    .padding([.top, .bottom, .leading], 15)
-                HStack {
-                    Text(journalEntry.content).font(.system(size: 18, weight: .light)).padding([.leading, .trailing], 15)
+            HStack {
+                VStack(alignment: .leading) {
+                
+                    Text(journalEntry.date, style: .date)
+                        .font(.system(size: 14, weight: .medium))
+                        .padding([.top, .bottom, .leading], 15)
+                    
+                    Text(journalEntry.content)
+                        .font(.system(size: 18, weight: .light))
+                        .padding([.leading, .trailing], 15)
+                        
                 }
                 Spacer()
                 
             }
+            
         }.navigationTitle(journalEntry.title)
     }
 }
 
 #Preview {
     JournalEntriesListView()
+        .modelContainer(for: JournalEntry.self, inMemory: true)
 }
