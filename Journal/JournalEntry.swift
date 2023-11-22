@@ -15,9 +15,9 @@ final class JournalEntry: Identifiable {
     var title: String = ""
     var date: Date = Date()
     var content: String = ""
-    var rating: Int
+    var rating: Double
     
-    init(title: String, date: Date, content: String, rating: Int) {
+    init(title: String, date: Date, content: String, rating: Double) {
         self.title = title
         self.date = date
         self.content = content

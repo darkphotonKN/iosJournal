@@ -18,24 +18,7 @@ struct CreateJournalEntryView: View {
     
     var body: some View {
         NavigationStack {
-            Form {
-                TextField(text: $title, label: {
-                    Text("Enter title")
-                })
-                DatePicker(selection: $date, displayedComponents: .date, label: {
-                    Text("Date:")
-                })
-                
-                // Rating
-                HStack {
-                    Text("Rating:")
-                    Text(String(repeating: "🍔", count: Int(rating)))
-                }
-                Slider(value: $rating, in: 0...5, step: 1)
-                
-                TextEditor(text: $content)
-                
-            }
+            JournalEntryFormView(title: $title, date: $date, content: $content, rating: $rating)
             .navigationTitle("New Entry")
             .toolbar() {
                
@@ -60,9 +43,10 @@ struct CreateJournalEntryView: View {
     
     func addJournalEntry() {
         // create new instance of JournalEntry and add to SwiftData
-        let newJournalEntry = JournalEntry(title: title, date: date, content: content, rating: Int(rating))
+        let newJournalEntry = JournalEntry(title: title, date: date, content: content, rating: rating)
         
         // add it to our SwiftData
+        
         modelContext.insert(newJournalEntry)
         
         // close the sheet

@@ -10,18 +10,16 @@ import SwiftData
 
 struct JournalEntriesListView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var journalList: [JournalEntry]
+    @Query(sort: \JournalEntry.date) private var journalList: [JournalEntry]
     
     // state
     @State private var showSheet: Bool = false
     
     var body: some View {
-        Text("").onAppear {
-            print("journalList:", journalList)
-        }
+        
         NavigationStack {
             List(journalList) { item in
-                NavigationLink(destination: JournalEntryWrapperView()) {
+                NavigationLink(destination: JournalEntryWrapperView(journalEntry: item)) {
                     JournalEntryRowView(journalEntry: item)
                 }
             }.padding(.top, 8)
