@@ -39,10 +39,7 @@ struct JournalEntryWrapperView: View {
                     Text("Edit")
                 }
             }
-            
-            
         }
-        
     }
     
     func deleteEntry() {

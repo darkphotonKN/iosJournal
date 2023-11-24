@@ -31,7 +31,6 @@ struct JournalEntriesListView: View {
             }.sheet(isPresented: $showSheet) {
                 CreateJournalEntryView()
             }
-            
         }
     }
 }
